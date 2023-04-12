@@ -1,5 +1,6 @@
 package org.lessons.java.pizzeria.api;
 
+import jakarta.validation.Valid;
 import org.lessons.java.pizzeria.model.Pizza;
 import org.lessons.java.pizzeria.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,10 @@ public class PizzaRestController {
     }
 
     //create pizza
+    @PostMapping
+    public Pizza create(@Valid @RequestBody Pizza pizza){
+    return pizzaService.createPizza(pizza);
+    }
     //update pizza
     //delete pizza
 }
