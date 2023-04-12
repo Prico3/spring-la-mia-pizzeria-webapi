@@ -35,7 +35,7 @@ public class PizzaService {
         return pizzaRepository.save(pizzaToUpdate);
     }
 
-    public List<Pizza> getAllPizzas(Optional<String> keyword) {
+    public List<Pizza> getAllPizzas() {
 
         return pizzaRepository.findAll(Sort.by("name"));
 

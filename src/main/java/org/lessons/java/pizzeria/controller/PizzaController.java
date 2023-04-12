@@ -32,7 +32,7 @@ public class PizzaController {
     public String index(Model model, @RequestParam(name = "q") Optional<String> keyword) {
         List<Pizza> pizzas;
         if (keyword.isEmpty()) {
-            pizzas = pizzaService.getAllPizzas(keyword);
+            pizzas = pizzaService.getAllPizzas();
         } else {
             pizzas = pizzaService.getFilteredPizzas(keyword.get());
             model.addAttribute("keyword", keyword.get());

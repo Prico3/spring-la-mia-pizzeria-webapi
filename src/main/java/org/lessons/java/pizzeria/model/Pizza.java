@@ -1,5 +1,6 @@
 package org.lessons.java.pizzeria.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
@@ -28,6 +29,7 @@ public class Pizza {
     private Integer price;
     private LocalDateTime cratedAt;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "pizza")
     private List<Offer> offers;
 
