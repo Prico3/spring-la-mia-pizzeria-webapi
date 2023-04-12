@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="/fragments/resources :: head"></th:block>
+    <title>Pizza detail</title>
+</head>
+<body>
+<th:block th:replace="/fragments/navbar :: navbar('pizzas')"></th:block>
+<div class="container" th:object="${pizza}">
+    <h1 th:text="*{name}">Pizza</h1>
+    <hr/>
+    <div>
+        <dl>
+            <dt>Description</dt>
+            <dd th:text="*{description}"></dd>
+            <dt>Price</dt>
+            <dd th:text="*{price}"></dd>
+            <dt>Ingredients</dt>
+            <dd><span th:each="ing : *{ingredients}" th:text="${ing.name}" class="me-1"> </span></dd>
+            <dd>
+                <a class="btn btn-danger" th:href="@{/}">Back</a>
+            </dd>
+        </dl>
+    </div>
+    <!--    Offers-->
+    <h1>Offers</h1>
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>Expire Date</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr th:each="offer : *{offers}" th:object="${offer}">
+            <td th:text="*{title}"></td>
+            <td th:text="${#temporals.format(offer.startDate, 'dd/MM/yyyy')}"></td>
+            <td th:text="${#temporals.format(offer.expireDate, 'dd/MM/yyyy')}"></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
